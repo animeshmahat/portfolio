@@ -1,8 +1,35 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import { projects } from "../assets/projectsData";
 import { AnimatePresence, motion } from "framer-motion";
 
+// Modal Component
 function ProjectModal({ project, onClose }) {
+  const modalRef = useRef();
+
+  // Handle Esc key press
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Escape") onClose();
+    },
+    [onClose]
+  );
+
+  // Handle click outside
+  const handleClickOutside = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [handleKeyDown]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -11,6 +38,7 @@ function ProjectModal({ project, onClose }) {
       className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
     >
       <motion.div
+        ref={modalRef}
         initial={{ scale: 0.95, y: 30 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 30 }}
@@ -70,35 +98,19 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
+// Projects Component
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const gridRef = useRef(null);
 
-  const gridRef = useRef(null); // Optional scroll
-
-  const categories = useMemo(() => {
-    const allCategories = projects.flatMap((p) => p.tech);
-    return ["All", ...Array.from(new Set(allCategories))];
-  }, []);
-
-  const filteredProjects = useMemo(() => {
-    return projects.filter((project) => {
-      const matchesSearch =
-        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory =
-        selectedCategory === "All" || project.tech.includes(selectedCategory);
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
-
-  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const visibleProjects = useMemo(() => {
+    return projects.slice(0, visibleCount);
+  }, [visibleCount]);
 
   const handleShowMore = () => {
-    setVisibleCount(filteredProjects.length);
+    setVisibleCount(projects.length);
     setTimeout(() => {
       gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
@@ -115,38 +127,13 @@ export default function Projects() {
           <span className="text-black dark:text-white">Projects</span>
         </h2>
 
-        {/* Search and Filter */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12 max-w-4xl mx-auto">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setVisibleCount(6); // reset
-            }}
-            className="w-full md:w-1/2 px-4 py-2 rounded-lg bg-white dark:bg-zinc-800 text-black dark:text-white border border-gray-300 dark:border-zinc-700"
-          />
-          <select
-            value={selectedCategory}
-            onChange={(e) => {
-              setSelectedCategory(e.target.value);
-              setVisibleCount(6); // reset
-            }}
-            className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-white dark:bg-zinc-800 text-black dark:text-white border border-gray-300 dark:border-zinc-700"
-          >
-            {categories.map((cat, i) => (
-              <option key={i} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Project Grid */}
         {visibleProjects.length > 0 ? (
           <>
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -200 }}
+              transition={{ duration: 1 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               ref={gridRef}
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 max-w-6xl mx-auto"
             >
@@ -167,17 +154,26 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent px-3 py-2">
-                    <h3 className="text-white text-md font-medium truncate">
-                      {project.title}
+                  {/* Dark blur overlay */}
+                  <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] z-10"></div>
+
+                  {/* Centered Title with outline */}
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <h3
+                      className="text-lg md:text-xl font-bold text-white dark:text-white text-center px-2"
+                      style={{
+                        textShadow:
+                          "0 0 3px #000, 0 0 5px #000, 0 0 10px rgba(0,0,0,0.8)",
+                      }}
+                    >
+                      {project.title.toUpperCase()}
                     </h3>
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Show More Button */}
-            {visibleCount < filteredProjects.length && (
+            {visibleCount < projects.length && (
               <div className="flex justify-center mt-10">
                 <button
                   onClick={handleShowMore}
@@ -203,7 +199,7 @@ export default function Projects() {
           </>
         ) : (
           <p className="text-center text-gray-600 dark:text-gray-300 mt-12">
-            No projects match your search.
+            No projects found.
           </p>
         )}
       </section>
