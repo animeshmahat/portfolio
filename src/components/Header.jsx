@@ -11,7 +11,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-white dark:bg-black transition-colors duration-500 text-center flex flex-col justify-center items-center overflow-hidden">
+    <div className="relative w-full min-h-[80vh] md:min-h-screen bg-white dark:bg-black transition-colors duration-500 text-center flex flex-col justify-center items-center overflow-hidden">
       <Navbar />
 
       {/* Particles background */}
@@ -34,7 +34,7 @@ export default function Header() {
       />
 
       {/* Hero Text */}
-      <div className="z-10 px-6">
+      <div className="z-10 px-6 mt-9">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
