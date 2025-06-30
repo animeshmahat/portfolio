@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 function ProjectModal({ project, onClose }) {
   const modalRef = useRef();
 
-  // Handle Esc key press
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === "Escape") onClose();
@@ -14,7 +13,6 @@ function ProjectModal({ project, onClose }) {
     [onClose]
   );
 
-  // Handle click outside
   const handleClickOutside = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       onClose();
@@ -120,7 +118,9 @@ export default function Projects() {
     <>
       <section
         id="Projects"
-        className="w-full min-h-screen py-16 px-4 bg-gray-50 dark:bg-gray-950 transition-colors duration-500"
+        className={`w-full ${
+          visibleCount < projects.length ? "py-16" : "min-h-screen py-16"
+        } px-4 bg-white dark:bg-black transition-colors duration-500`}
       >
         <h2 className="text-center text-4xl md:text-5xl font-bold text-black dark:text-white mb-8">
           <span className="text-amber-500">My&nbsp;</span>
@@ -154,10 +154,7 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  {/* Dark blur overlay */}
                   <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] z-10"></div>
-
-                  {/* Centered Title with outline */}
                   <div className="absolute inset-0 flex items-center justify-center z-20">
                     <h3
                       className="text-lg md:text-xl font-bold text-white dark:text-white text-center px-2"

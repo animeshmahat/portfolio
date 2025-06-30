@@ -38,7 +38,7 @@ export default function Contact() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full pb-13 px-4 bg-white dark:bg-gray-950 text-black dark:text-white transition-colors duration-500"
+      className="w-full pb-13 px-4 bg-white dark:bg-black text-black dark:text-white transition-colors duration-500"
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">

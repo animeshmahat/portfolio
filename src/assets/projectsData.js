@@ -7,6 +7,7 @@ import netflix from "./thumbnails/netflix.png";
 import sattire from "./thumbnails/sattire.jpg";
 import verse from "./thumbnails/verse.jpg";
 import weather from "./thumbnails/weather.jpg";
+import todo from "./thumbnails/todo.jpg";
 
 export const projects = [
   {
@@ -24,7 +25,7 @@ export const projects = [
     type: "frontend",
     image: gemini,
     description: "A Gemini Clone using the Gemini API.",
-    live: "animeshgeminiclone.netlify.app",
+    live: "https://animeshgeminiclone.netlify.app",
     github: "https://github.com/animeshmahat/Gemini-Clone",
     tech: ["React.js", "Gemini-API"],
   },
@@ -41,7 +42,7 @@ export const projects = [
     type: "frontend",
     image: netflix,
     description: "A Netflix clone using react and TMBD API.",
-    live: "nf-clone-animesh.netlify.app",
+    live: "https://nf-clone-animesh.netlify.app",
     github: "https://github.com/animeshmahat/Netflix-Clone",
     tech: ["React.js", "TMDB-API"],
   },
@@ -63,13 +64,22 @@ export const projects = [
     tech: ["Flask"],
   },
   {
+    title: "React ToDo",
+    type: "frontend",
+    image: todo,
+    description: "A react ToDo miniproject",
+    live: "https://fakestore-api-animesh.netlify.app",
+    github: "https://github.com/animeshmahat/Verse-API",
+    tech: ["React.js", "FakeStore-API"],
+  },
+  {
     title: "FakeStore",
     type: "frontend",
     image: fakestore,
     description: "A react app using fakestore API + cart functionality",
-    live: "fakestore-api-animesh.netlify.app",
-    github: "https://github.com/animeshmahat/Verse-API",
-    tech: ["React.js", "FakeStore-API"],
+    live: "https://todoanimesh.netlify.app/",
+    github: "https://github.com/animeshmahat/ReactToDo",
+    tech: ["React.js", "TailwindCss"],
   },
   {
     title: "Sattire Social Media",

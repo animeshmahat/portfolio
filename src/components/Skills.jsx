@@ -72,9 +72,9 @@ export default function Skills() {
   return (
     <section
       id="Skills"
-      className="w-full px-4 py-24 bg-gray-50 dark:bg-gray-950 text-black dark:text-white transition-colors duration-500"
+      className="w-full px-4 py-8 mb-8 bg-white dark:bg-black text-black dark:text-white transition-colors duration-500"
     >
-      <h2 className="text-center text-4xl md:text-5xl font-bold text-black dark:text-white mb-8">
+      <h2 className="text-center text-4xl md:text-5xl font-bold text-black dark:text-white md:mb-6 lg:mb-6 xl:mb-6 xxl:mb-6">
         <span className="text-amber-500">My&nbsp;</span>
         <span className="text-black dark:text-white">Skills</span>
       </h2>
@@ -92,7 +92,7 @@ export default function Skills() {
           transition={{ duration: 1 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="w-full md:w-1/2 h-[400px] md:h-[500px] relative"
+          className="w-full md:w-1/2 h-[400px] md:h-[500px] xl:w-1/2 lg:w-1/2 xxl:w-1/2 relative"
         >
           <Radar data={data} options={options} />
         </motion.div>
