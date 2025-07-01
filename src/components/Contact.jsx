@@ -48,7 +48,7 @@ export default function Contact() {
           </span>
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-10">
-          Ready to make a move? Let’s get started.
+          Have a question or just want to connect? Reach out!
         </p>
       </div>
 

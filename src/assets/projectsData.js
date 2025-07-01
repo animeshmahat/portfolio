@@ -8,6 +8,7 @@ import sattire from "./thumbnails/sattire.jpg";
 import verse from "./thumbnails/verse.jpg";
 import weather from "./thumbnails/weather.jpg";
 import todo from "./thumbnails/todo.jpg";
+import cie from "./thumbnails/cie.jpg";
 
 export const projects = [
   {
@@ -30,12 +31,14 @@ export const projects = [
     tech: ["React.js", "Gemini-API"],
   },
   {
-    title: "Weather App",
-    type: "Android Application",
-    image: weather,
-    description: "Weather forecast app using OpenWeatherMap API.",
-    github: "https://github.com/animeshmahat/WeatherApp",
-    tech: ["Java", "OpenWeather API"],
+    title: "Country Info Explorer",
+    type: "frontend",
+    image: cie,
+    description:
+      "A react mini-project displaying country information from restcountries API.",
+    live: "https://country-haven.netlify.app/",
+    github: "https://github.com/animeshmahat/Country-Info-Explorer",
+    tech: ["React.js"],
   },
   {
     title: "Netflix-Clone",
@@ -45,6 +48,14 @@ export const projects = [
     live: "https://nf-clone-animesh.netlify.app",
     github: "https://github.com/animeshmahat/Netflix-Clone",
     tech: ["React.js", "TMDB-API"],
+  },
+  {
+    title: "Weather App",
+    type: "Android Application",
+    image: weather,
+    description: "Weather forecast app using OpenWeatherMap API.",
+    github: "https://github.com/animeshmahat/WeatherApp",
+    tech: ["Java", "OpenWeather API"],
   },
   {
     title: "Verse",
