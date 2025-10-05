@@ -17,7 +17,7 @@ export const skills = [
   { name: "React.js", proficiency: 0.7, icon: SiReact },
   { name: "Tailwind", proficiency: 0.75, icon: SiTailwindcss },
   { name: "Python", proficiency: 0.7, icon: SiPython },
-  { name: "Laravel", proficiency: 0.75, icon: SiLaravel },
-  { name: "SQL", proficiency: 0.9, icon: SiMysql },
+  { name: "Laravel", proficiency: 0.6, icon: SiLaravel },
+  { name: "SQL", proficiency: 0.8, icon: SiMysql },
   { name: "Bootstrap", proficiency: 0.9, icon: SiBootstrap },
 ];

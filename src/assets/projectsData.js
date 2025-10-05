@@ -51,10 +51,11 @@ export const projects = [
   },
   {
     title: "Weather App",
-    type: "Android Application",
+    type: "Web Application",
     image: weather,
     description: "Weather forecast app using OpenWeatherMap API.",
-    github: "https://github.com/animeshmahat/WeatherApp",
+    live: "https://weatheranimesh.netlify.app/",
+    github: "https://github.com/animeshmahat/React-Weather",
     tech: ["Java", "OpenWeather API"],
   },
   {
@@ -80,7 +81,7 @@ export const projects = [
     image: todo,
     description: "A react ToDo miniproject",
     live: "https://fakestore-api-animesh.netlify.app",
-    github: "https://github.com/animeshmahat/Verse-API",
+    github: "https://github.com/animeshmahat/ReactToDo",
     tech: ["React.js", "FakeStore-API"],
   },
   {
@@ -88,8 +89,8 @@ export const projects = [
     type: "frontend",
     image: fakestore,
     description: "A react app using fakestore API + cart functionality",
-    live: "https://todoanimesh.netlify.app/",
-    github: "https://github.com/animeshmahat/ReactToDo",
+    live: "https://fakestore-api-animesh.netlify.app/",
+    github: "https://github.com/animeshmahat/Fake-Store",
     tech: ["React.js", "TailwindCss"],
   },
   {
@@ -105,15 +106,15 @@ export const projects = [
     type: "backend",
     image: django,
     description: "A Django CRUD Application.",
-    github: "https://github.com/animeshmahat/SatireSocialMedia",
+    github: "https://github.com/animeshmahat/CRUD-Django",
     tech: ["Django", "Bootstrap"],
   },
   {
     title: "Laravel CRUD Application",
     type: "backend",
     image: laravel,
-    description: "A small sattire social media feed using fakeusers.",
-    github: "https://github.com/animeshmahat/SatireSocialMedia",
+    description: "A laravel CRUD application.",
+    github: "https://github.com/animeshmahat/crud_laravel",
     tech: ["Laravel", "Bootstrap"],
   },
 ];
