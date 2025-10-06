@@ -80,7 +80,7 @@ export const projects = [
     type: "frontend",
     image: todo,
     description: "A react ToDo miniproject",
-    live: "https://fakestore-api-animesh.netlify.app",
+    live: "https://todoanimesh.netlify.app",
     github: "https://github.com/animeshmahat/ReactToDo",
     tech: ["React.js", "FakeStore-API"],
   },
